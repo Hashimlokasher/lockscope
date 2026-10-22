@@ -114,8 +114,8 @@ scripts/             Packaging script
 ## Hosted policy
 
 The [privacy site](https://hashimlokasher.github.io/lockscope/) is deployed by
-[`.github/workflows/pages.yml`](.github/workflows/pages.yml). Once Pages is
-enabled, use `https://<owner>.github.io/<repo>/privacy.html` in the store listing.
+[`.github/workflows/pages.yml`](.github/workflows/pages.yml). The policy URL is
+`https://hashimlokasher.github.io/lockscope/privacy.html`.
 
 ## Documentation
 
