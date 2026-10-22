@@ -1,0 +1,24 @@
+CHANGELOG.md
+  h_2be081509d88e0 21-22
+README.md
+  h_2be081509d88e0 7,9,116
+package.json
+  h_2be081509d88e0 24-32
+site/index.html
+  h_2be081509d88e0 27
+store/README.md
+  h_2be081509d88e0 27-28
+store/listing.md
+  h_2be081509d88e0 9,40,42-44
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "97295387460d9a0d3158fdeec282940d2753a51a",
+  "prompts": {},
+  "humans": {
+    "h_2be081509d88e0": {
+      "author": "Hashim Lokasher <hashimlokasher@gmail.com>"
+    }
+  }
+}
