@@ -26,7 +26,7 @@ store files are excluded.
    test the panel.
 4. Enable GitHub Pages (the `Deploy privacy site` workflow publishes `site/`),
    then use `https://<owner>.github.io/<repo>/privacy.html` in the listing.
-   Replace the source link placeholder in `site/index.html`.
+   Replace the `<owner>/<repo>` placeholders in `store/listing.md`.
 5. Upload `dist/lockscope-<version>.zip`.
 6. Upload the two screenshots and `extension/icons/icon128.png`.
 7. Paste the text from `listing.md`; declare no remote code and no data
