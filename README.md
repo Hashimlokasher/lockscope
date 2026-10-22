@@ -98,7 +98,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for the full workflow and
 
 ```
 extension/           Manifest V3 extension (no build step)
-  panel/             Lane UI, snapshot model, timeline, formatting
+  panel/             Lanes, tabs/instrumentation controllers, model, timeline
   page-agent.js      Sampling agent injected into the inspected page
   instrument.js      Opt-in LockManager.request instrumentation
 demo/                Web Locks demo page and worker

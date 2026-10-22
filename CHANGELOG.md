@@ -22,6 +22,9 @@ All notable changes to this project are documented here. The format follows
 ### Changed
 
 - README, docs, and project layout aligned with a standard GitHub repository.
+- Split the 1,400-line `panel.js` into focused modules: `lanes.js`, `tabs.js`,
+  `instrumentation.js`, and `exact.js`.
+- Packaging validation now requires every panel module.
 - Optional tab labels no longer request the `tabs` permission; host access is
   enough to read matching tab URLs and titles.
 

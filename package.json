@@ -17,7 +17,7 @@
     "debugging"
   ],
   "scripts": {
-    "check": "node --check extension/devtools.js && node --check extension/page-agent.js && node --check extension/panel/panel.js && node --check extension/instrument.js && node --check extension/panel/model.js && node --check extension/panel/timeline.js && node --check extension/panel/format.js && node --check demo/demo.js && node --check demo/worker.js && node --check scripts/package.mjs",
+    "check": "node --check extension/devtools.js && node --check extension/page-agent.js && node --check extension/panel/panel.js && node --check extension/instrument.js && node --check extension/panel/model.js && node --check extension/panel/timeline.js && node --check extension/panel/lanes.js && node --check extension/panel/tabs.js && node --check extension/panel/instrumentation.js && node --check extension/panel/exact.js && node --check extension/panel/format.js && node --check demo/demo.js && node --check demo/worker.js && node --check scripts/package.mjs",
     "test": "node --test",
     "demo": "python3 -m http.server 8080 --directory demo",
     "package": "node scripts/package.mjs"

@@ -195,7 +195,11 @@ lockscope/
 │   ├── panel/
 │   │   ├── panel.html
 │   │   ├── panel.css
-│   │   ├── panel.js            # lane UI, eval loop, state
+│   │   ├── panel.js            # DevTools integration, polling, lifecycle
+│   │   ├── lanes.js            # lane/stat/empty rendering
+│   │   ├── tabs.js             # optional tab attribution
+│   │   ├── instrumentation.js  # opt-in patch + dock controller
+│   │   ├── exact.js            # exact record rendering
 │   │   ├── model.js            # snapshots → intervals/lanes/stats (M2)
 │   │   ├── timeline.js         # canvas renderer + hit testing (M3)
 │   │   └── format.js           # durations, short ids, names
