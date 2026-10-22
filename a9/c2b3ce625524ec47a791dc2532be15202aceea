@@ -1,0 +1,14 @@
+store/README.md
+  h_2be081509d88e0 29
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "a9c2b3ce625524ec47a791dc2532be15202aceea",
+  "prompts": {},
+  "humans": {
+    "h_2be081509d88e0": {
+      "author": "Hashim Lokasher <hashimlokasher@gmail.com>"
+    }
+  }
+}
