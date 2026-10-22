@@ -1,0 +1,102 @@
+.editorconfig
+  h_2be081509d88e0 1-15
+.gitattributes
+  h_2be081509d88e0 1-4
+.github/ISSUE_TEMPLATE/bug_report.yml
+  h_2be081509d88e0 1-84
+.github/ISSUE_TEMPLATE/feature_request.yml
+  h_2be081509d88e0 1-37
+.github/pull_request_template.md
+  h_2be081509d88e0 1-18
+.github/workflows/ci.yml
+  h_2be081509d88e0 1-39
+.github/workflows/pages.yml
+  h_2be081509d88e0 1-30
+.gitignore
+  h_2be081509d88e0 1-18
+.nvmrc
+  h_2be081509d88e0 1
+CHANGELOG.md
+  h_2be081509d88e0 1-86
+CODE_OF_CONDUCT.md
+  h_2be081509d88e0 1-85
+CONTRIBUTING.md
+  h_2be081509d88e0 1-63
+LICENSE
+  h_2be081509d88e0 1-21
+README.md
+  h_2be081509d88e0 1-135
+SECURITY.md
+  h_2be081509d88e0 1-45
+demo/demo.css
+  h_2be081509d88e0 1-342
+demo/demo.js
+  h_2be081509d88e0 1-533
+demo/index.html
+  h_2be081509d88e0 1-184
+demo/worker.js
+  h_2be081509d88e0 1-17
+docs/manual-tests.md
+  h_2be081509d88e0 1-85
+docs/plan.md
+  h_2be081509d88e0 1-714
+docs/verification.md
+  h_2be081509d88e0 1-200
+extension/devtools.html
+  h_2be081509d88e0 1-10
+extension/devtools.js
+  h_2be081509d88e0 1-14
+extension/instrument.js
+  h_2be081509d88e0 1-222
+extension/manifest.json
+  h_2be081509d88e0 1-21
+extension/page-agent.js
+  h_2be081509d88e0 1-140
+extension/panel/format.js
+  h_2be081509d88e0 1-87
+extension/panel/model.js
+  h_2be081509d88e0 1-400
+extension/panel/panel.css
+  h_2be081509d88e0 1-950
+extension/panel/panel.html
+  h_2be081509d88e0 1-181
+extension/panel/panel.js
+  h_2be081509d88e0 1-1455
+extension/panel/timeline.js
+  h_2be081509d88e0 1-424
+package.json
+  h_2be081509d88e0 1-25
+scripts/package.mjs
+  h_2be081509d88e0 1-70
+site/index.html
+  h_2be081509d88e0 1-32
+site/privacy.html
+  h_2be081509d88e0 1-73
+site/style.css
+  h_2be081509d88e0 1-58
+store/README.md
+  h_2be081509d88e0 1-33
+store/listing.md
+  h_2be081509d88e0 1-86
+store/privacy-policy.md
+  h_2be081509d88e0 1-59
+test/format.test.js
+  h_2be081509d88e0 1-70
+test/instrument.test.js
+  h_2be081509d88e0 1-115
+test/model.test.js
+  h_2be081509d88e0 1-152
+test/timeline.test.js
+  h_2be081509d88e0 1-65
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "7f6b381e61be3a8fd9438d590df1c233f22f46e7",
+  "prompts": {},
+  "humans": {
+    "h_2be081509d88e0": {
+      "author": "Hashim Lokasher <hashimlokasher@gmail.com>"
+    }
+  }
+}
