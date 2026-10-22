@@ -6,7 +6,7 @@
 - **Short description (132 max):** Inspect navigator.locks across tabs — holders, waiters, queue positions, timeline, and opt-in exact timings.
 - **Category:** Developer Tools
 - **Language:** English
-- **Homepage / support:** project repository URL (fill in before submitting)
+- **Homepage / support:** https://github.com/hashimlokasher/lockscope
 
 ## Detailed description
 
@@ -37,11 +37,11 @@ no persistence of lock names or tab titles.
 Use the bundled demo page to try queueing, shared readers, abort, `ifAvailable`,
 `steal`, worker-held locks, and a two-tab deadlock.
 
-## URLs to fill in
+## URLs
 
-- Repository: `https://github.com/<owner>/lockscope`
-- Privacy policy: `https://<owner>.github.io/lockscope/privacy.html` (after Pages deploy)
-- Support: the repository Issues URL
+- Repository: https://github.com/hashimlokasher/lockscope
+- Privacy policy: https://hashimlokasher.github.io/lockscope/privacy.html
+- Support: https://github.com/hashimlokasher/lockscope/issues
 
 ## Permission justification
 

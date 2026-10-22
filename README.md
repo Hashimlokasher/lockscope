@@ -4,8 +4,9 @@
 
 [![Manifest V3](https://img.shields.io/badge/Chrome-Manifest%20V3-4285F4?logo=googlechrome&logoColor=white)](#install)
 [![License: MIT](https://img.shields.io/badge/license-MIT-2ea44f)](LICENSE)
+[![CI](https://github.com/hashimlokasher/lockscope/actions/workflows/ci.yml/badge.svg)](https://github.com/hashimlokasher/lockscope/actions/workflows/ci.yml)
 
-**Current version:** 0.6.0 · [Changelog](CHANGELOG.md)
+**Current version:** 0.6.0 · [Changelog](CHANGELOG.md) · [Source](https://github.com/hashimlokasher/lockscope)
 
 LockScope shows every lock held or requested by the inspected origin — across
 tabs — with holders, FIFO waiters, observed durations, and a live timeline.
@@ -112,7 +113,7 @@ scripts/             Packaging script
 
 ## Hosted policy
 
-The [privacy site](site/index.html) is deployed by
+The [privacy site](https://hashimlokasher.github.io/lockscope/) is deployed by
 [`.github/workflows/pages.yml`](.github/workflows/pages.yml). Once Pages is
 enabled, use `https://<owner>.github.io/<repo>/privacy.html` in the store listing.
 

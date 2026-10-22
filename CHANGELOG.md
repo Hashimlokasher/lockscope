@@ -18,6 +18,8 @@ All notable changes to this project are documented here. The format follows
 - CI workflow, contributing guide, code of conduct, security policy, and this
   changelog.
 - Public landing/privacy site with a GitHub Pages deployment workflow.
+- Repository and Pages URLs wired into the README, package metadata, and store
+  listing.
 
 ### Changed
 

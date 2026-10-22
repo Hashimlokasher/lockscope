@@ -24,9 +24,8 @@ store files are excluded.
 2. Run `npm test` and `npm run check`.
 3. Run `npm run package`, unzip to a clean folder, load it unpacked, and smoke
    test the panel.
-4. Enable GitHub Pages (the `Deploy privacy site` workflow publishes `site/`),
-   then use `https://<owner>.github.io/<repo>/privacy.html` in the listing.
-   Replace the `<owner>/<repo>` placeholders in `store/listing.md`.
+4. GitHub Pages is enabled and `Deploy privacy site` publishes `site/`; the
+   policy is at https://hashimlokasher.github.io/lockscope/privacy.html.
 5. Upload `dist/lockscope-<version>.zip`.
 6. Upload the two screenshots and `extension/icons/icon128.png`.
 7. Paste the text from `listing.md`; declare no remote code and no data
