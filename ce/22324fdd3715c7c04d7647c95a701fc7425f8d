@@ -1,0 +1,32 @@
+CHANGELOG.md
+  h_2be081509d88e0 25-27
+README.md
+  h_2be081509d88e0 101
+docs/plan.md
+  h_2be081509d88e0 198-202
+extension/panel/exact.js
+  h_2be081509d88e0 1-174
+extension/panel/instrumentation.js
+  h_2be081509d88e0 1-264
+extension/panel/lanes.js
+  h_2be081509d88e0 1-305
+extension/panel/panel.js
+  h_2be081509d88e0 1-2,4,6,73-75,83-120,206,263,271,295-296,314,381-383,407-408,492
+extension/panel/tabs.js
+  h_2be081509d88e0 1-286
+package.json
+  h_2be081509d88e0 20
+scripts/package.mjs
+  h_2be081509d88e0 27-30
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "ce22324fdd3715c7c04d7647c95a701fc7425f8d",
+  "prompts": {},
+  "humans": {
+    "h_2be081509d88e0": {
+      "author": "Hashim Lokasher <hashimlokasher@gmail.com>"
+    }
+  }
+}
