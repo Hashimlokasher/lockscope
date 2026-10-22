@@ -1,0 +1,16 @@
+extension/instrument.js
+  h_2be081509d88e0 65
+extension/panel/panel.js
+  h_2be081509d88e0 855-863
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "c358a6d7e1eefa64db2c546b31f8e97d6676f0da",
+  "prompts": {},
+  "humans": {
+    "h_2be081509d88e0": {
+      "author": "Hashim Lokasher <hashimlokasher@gmail.com>"
+    }
+  }
+}
