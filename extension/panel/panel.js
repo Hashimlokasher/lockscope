@@ -852,7 +852,15 @@ async function installInstrumentation({ switchDock = false } = {}) {
   view.instrumentOn = true;
   updateInstrumentButton();
   startInstrumentHeartbeat();
-  await refreshInstrumentation();
+
+  try {
+    await refreshInstrumentation();
+  } catch (error) {
+    view.instrumentOn = false;
+    stopInstrumentHeartbeat();
+    updateInstrumentButton();
+    throw error;
+  }
 
   if (switchDock) setDock("exact");
 }

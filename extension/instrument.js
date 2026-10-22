@@ -62,6 +62,7 @@
 
   function install() {
     if (installed) {
+      lastSeen = Date.now();
       startWatchdog();
       return true;
     }
