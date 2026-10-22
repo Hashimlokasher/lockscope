@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>LockScope</title>
+    <link rel="stylesheet" href="panel.css" />
+  </head>
+  <body>
+    <header class="toolbar">
+      <div class="brand">
+        <svg class="mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+          <rect x="4.5" y="10.5" width="15" height="10" rx="2.5" />
+          <path d="M8 10.5V7a4 4 0 0 1 8 0v3.5" />
+        </svg>
+        <h1>LockScope</h1>
+      </div>
+
+      <div class="counts" aria-label="Lock counts">
+        <span class="pill pill-held"><b id="heldCount">0</b> held</span>
+        <span class="pill pill-pending"><b id="pendingCount">0</b> waiting</span>
+      </div>
+
+      <div class="spacer"></div>
+
+      <button id="pause" class="btn" type="button" aria-pressed="false">Pause</button>
+
+      <button
+        id="tabLabels"
+        class="btn"
+        type="button"
+        aria-pressed="false"
+        title="Show which tab holds each lock (asks for permission for this origin)"
+      >
+        Tab labels
+      </button>
+
+      <button
+        id="instrument"
+        class="btn"
+        type="button"
+        aria-pressed="false"
+        title="Patch LockManager.request in the inspected page for exact timings and stacks"
+      >
+        Instrument
+      </button>
+
+      <label class="field" for="interval">
+        <span>Sample</span>
+        <select id="interval">
+          <option value="100">100 ms</option>
+          <option value="250">250 ms</option>
+          <option value="500" selected>500 ms</option>
+          <option value="1000">1 s</option>
+          <option value="2000">2 s</option>
+        </select>
+      </label>
+    </header>
+
+    <div class="subbar">
+      <span id="url" class="url" title="">Connecting…</span>
+      <span id="status" class="status" data-state="connecting" role="status">
+        <span class="dot" aria-hidden="true"></span>
+        <span id="statusText">connecting</span>
+      </span>
+    </div>
+
+    <div class="filterbar">
+      <label class="search" for="filter">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+          <circle cx="7" cy="7" r="4.5" />
+          <path d="m10.5 10.5 3 3" />
+        </svg>
+        <input id="filter" type="search" placeholder="Filter lock name" autocomplete="off" spellcheck="false" />
+      </label>
+
+      <label class="field" for="modeFilter">
+        <span>Mode</span>
+        <select id="modeFilter">
+          <option value="all">all</option>
+          <option value="exclusive">exclusive</option>
+          <option value="shared">shared</option>
+        </select>
+      </label>
+
+      <button id="clear" class="btn" type="button" title="Clear history and restart durations">Clear</button>
+      <span id="stats" class="stats" aria-live="off"></span>
+    </div>
+
+    <main class="content">
+      <div id="banner" class="banner" role="status" hidden>
+        <strong>Heads up.</strong>
+        <span id="bannerText"></span>
+      </div>
+
+      <section id="fatal" class="state" hidden>
+        <svg class="state-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="9" />
+          <path d="M12 7.5v5.5M12 16.5v.01" />
+        </svg>
+        <h2>Can’t inspect this page</h2>
+        <p id="fatalMessage" class="state-copy"></p>
+        <button id="retry" class="btn btn-primary" type="button">Retry</button>
+      </section>
+
+      <section id="empty" class="state" hidden>
+        <svg class="state-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true">
+          <rect x="4.5" y="10.5" width="15" height="10" rx="2.5" />
+          <path d="M8 10.5V7a4 4 0 0 1 8 0v3.5" />
+        </svg>
+        <h2 id="emptyTitle">No locks in this origin</h2>
+        <p id="emptyCopy" class="state-copy">Hold one from the page or run this in the console:</p>
+        <code id="emptySnippet" class="snippet">navigator.locks.request("demo", async () =&gt; { … })</code>
+      </section>
+
+      <div id="lanes" class="lanes" hidden></div>
+    </main>
+
+    <section id="timeline" class="timeline" aria-label="Lock timeline">
+      <div class="timeline-head">
+        <div class="dock-tabs" role="tablist" aria-label="Bottom panel">
+          <button
+            id="dockTimeline"
+            class="dock-tab is-active"
+            type="button"
+            role="tab"
+            aria-selected="true"
+            aria-controls="timelinePane"
+          >
+            Timeline
+          </button>
+          <button
+            id="dockExact"
+            class="dock-tab"
+            type="button"
+            role="tab"
+            aria-selected="false"
+            aria-controls="exactPane"
+          >
+            Exact
+          </button>
+        </div>
+
+        <span id="timelineLegend" class="legend">
+          <span class="legend-item"><i class="swatch swatch-held" aria-hidden="true"></i>held</span>
+          <span class="legend-item"><i class="swatch swatch-waiting" aria-hidden="true"></i>waiting</span>
+        </span>
+
+        <span id="timelineCount" class="timeline-count"></span>
+        <span id="exactCount" class="timeline-count" hidden></span>
+        <button id="exactClear" class="btn" type="button" hidden>Clear</button>
+
+        <div id="timelineZoom" class="zoom" role="group" aria-label="Timeline window">
+          <button type="button" class="zoom-btn" data-window="15000" aria-pressed="false">15s</button>
+          <button type="button" class="zoom-btn is-active" data-window="60000" aria-pressed="true">60s</button>
+          <button type="button" class="zoom-btn" data-window="300000" aria-pressed="false">5m</button>
+        </div>
+      </div>
+
+      <div id="timelinePane" class="timeline-body">
+        <canvas id="timelineCanvas" role="img" aria-label="Lock activity timeline"></canvas>
+        <div id="timelineTip" class="timeline-tip" hidden></div>
+      </div>
+
+      <div id="exactPane" class="exact-body" hidden>
+        <div id="exactEmpty" class="exact-empty">
+          Instrumentation is off. Click <strong>Instrument</strong> to record exact request,
+          acquire, and release times with the awaiting call stack.
+        </div>
+        <div id="exactList" class="exact-list" role="list"></div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <span id="footnote">Sampled from navigator.locks.query()</span>
+      <span class="scope">same origin · all tabs · durations are lower bounds</span>
+    </footer>
+
+    <script type="module" src="panel.js"></script>
+  </body>
+</html>

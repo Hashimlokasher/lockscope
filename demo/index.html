@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>LockScope — Web Locks demo</title>
+    <link rel="stylesheet" href="demo.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <div class="hero-title">
+        <svg class="mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+          <rect x="4.5" y="10.5" width="15" height="10" rx="2.5" />
+          <path d="M8 10.5V7a4 4 0 0 1 8 0v3.5" />
+        </svg>
+        <div>
+          <h1>LockScope demo</h1>
+          <p class="subtitle">
+            Exercises for <code>navigator.locks</code>. Open DevTools → the
+            <strong>LockScope</strong> panel, then press a button.
+          </p>
+        </div>
+      </div>
+      <div class="origin" id="origin"></div>
+    </header>
+
+    <div id="unsupported" class="notice notice-error" hidden>
+      <strong>Web Locks is unavailable.</strong>
+      Open this page over <code>http://localhost</code> or HTTPS. Locks require a
+      secure context.
+    </div>
+
+    <main>
+      <section class="grid" aria-label="Scenarios">
+        <article class="card">
+          <h2>Exclusive hold</h2>
+          <p>Hold <code>resource-a</code> for 8 seconds. One holder, no waiters.</p>
+          <div class="card-actions">
+            <button type="button" data-action="exclusive">Hold 8 s</button>
+          </div>
+        </article>
+
+        <article class="card">
+          <h2>Queue writers</h2>
+          <p>
+            Three exclusive requests for <code>resource-a</code>. Watch the FIFO
+            queue and growing wait times.
+          </p>
+          <div class="card-actions">
+            <button type="button" data-action="queue">Queue 3</button>
+          </div>
+        </article>
+
+        <article class="card">
+          <h2>Shared readers</h2>
+          <p>
+            Three shared holders of <code>resource-b</code>, then one exclusive
+            writer that waits for all of them.
+          </p>
+          <div class="card-actions">
+            <button type="button" data-action="shared">Readers + writer</button>
+          </div>
+        </article>
+
+        <article class="card">
+          <h2>Cross-tab</h2>
+          <p>
+            Open a second tab of this origin that immediately holds
+            <code>resource-a</code>. Both tabs share one lock manager.
+          </p>
+          <div class="card-actions">
+            <button type="button" data-action="cross-tab">Open second tab</button>
+          </div>
+        </article>
+
+        <article class="card card-wide">
+          <h2>Clean up</h2>
+          <p>
+            Releases everything this page is holding and aborts anything still
+            queued. Closing the tab releases its locks too.
+          </p>
+          <div class="card-actions">
+            <button type="button" class="secondary" data-action="release">Release all</button>
+            <button type="button" class="secondary" data-action="copy">Copy query() JSON</button>
+          </div>
+        </article>
+      </section>
+
+      <h2 class="section-title">Edge cases</h2>
+      <section class="grid" aria-label="Edge cases">
+        <article class="card">
+          <h2>Abort while queued</h2>
+          <p>
+            A holder blocks <code>abort-queued</code>; a waiter aborts after
+            800 ms and disappears from the queue.
+          </p>
+          <div class="card-actions">
+            <button type="button" data-action="abort-queued">Abort queued</button>
+          </div>
+        </article>
+
+        <article class="card">
+          <h2>Abort after grant</h2>
+          <p>
+            Acquire <code>abort-granted</code>, call <code>abort()</code> after
+            it is granted, and see that the lock stays held.
+          </p>
+          <div class="card-actions">
+            <button type="button" data-action="abort-granted">Abort granted</button>
+          </div>
+        </article>
+
+        <article class="card">
+          <h2><code>ifAvailable</code> skip</h2>
+          <p>
+            Hold <code>if-available</code>; a second request skips instead of
+            queueing, so no pending entry appears.
+          </p>
+          <div class="card-actions">
+            <button type="button" data-action="if-available">Try ifAvailable</button>
+          </div>
+        </article>
+
+        <article class="card">
+          <h2><code>steal</code> takeover</h2>
+          <p>
+            Hold <code>steal-demo</code>, then steal it. The original callback
+            keeps running but its lock is gone.
+          </p>
+          <div class="card-actions">
+            <button type="button" data-action="steal">Steal lock</button>
+          </div>
+        </article>
+
+        <article class="card">
+          <h2>Worker-held lock</h2>
+          <p>
+            A dedicated worker holds <code>worker-lock</code> for 8 seconds. It
+            appears with its own <code>clientId</code>.
+          </p>
+          <div class="card-actions">
+            <button type="button" data-action="worker">Start worker</button>
+          </div>
+        </article>
+
+        <article class="card">
+          <h2>Two-tab deadlock</h2>
+          <p>
+            Opens a second tab. Each tab holds one lock and waits for the other;
+            release from either tab to break it.
+          </p>
+          <div class="card-actions">
+            <button type="button" data-action="deadlock">Start deadlock</button>
+          </div>
+        </article>
+      </section>
+
+      <section class="panels">
+        <div class="panel">
+          <div class="panel-head">
+            <h2>This origin right now</h2>
+            <span class="hint">query() every 500 ms</span>
+          </div>
+          <div id="live" class="live">waiting for locks…</div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-head">
+            <h2>Activity</h2>
+            <span class="hint" id="role"></span>
+          </div>
+          <ol id="log" class="log" aria-live="polite"></ol>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <span>Same origin = one lock manager across tabs, iframes, and workers.</span>
+      <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Locks_API" target="_blank" rel="noreferrer">Web Locks API</a>
+    </footer>
+
+    <script type="module" src="demo.js"></script>
+  </body>
+</html>

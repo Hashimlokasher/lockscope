@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>LockScope privacy policy</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1>Privacy policy</h1>
+    <p class="subtitle">Effective 2026-10-23</p>
+
+    <p>
+      LockScope is a Chrome DevTools extension for inspecting the Web Locks API.
+      It is designed to run entirely on your machine.
+    </p>
+
+    <h2>What LockScope processes</h2>
+    <p>While the panel is open, LockScope reads the Web Locks state of the page you are inspecting:</p>
+    <ul>
+      <li>lock names, modes, and <code>clientId</code> values;</li>
+      <li>lock timing derived from repeated <code>navigator.locks.query()</code> samples;</li>
+      <li>if tab labels are enabled, the titles and URLs of same-origin tabs;</li>
+      <li>if instrumentation is enabled, exact request/acquire/release timestamps and
+        JavaScript stack traces from the inspected page.</li>
+    </ul>
+
+    <h2>Where it goes</h2>
+    <p>
+      Nowhere. This data is held in memory for the DevTools session. LockScope has
+      no network code, no analytics, no telemetry, no accounts, and does not write
+      lock names, client IDs, tab titles, or stacks to disk.
+    </p>
+
+    <h2>Permissions</h2>
+    <p>
+      The extension requires no permissions at install. Two features are opt-in:
+    </p>
+    <ul>
+      <li><strong>Tab labels</strong> ask for <code>scripting</code> and the inspected
+        origin's host permission when you click the button. You can revoke them at
+        any time in <code>chrome://extensions</code>.</li>
+      <li><strong>Instrumentation</strong> does not use a Chrome permission; it
+        patches <code>LockManager.request</code> in the inspected page's main world.
+        Toggle it off or navigate to remove the patch.</li>
+    </ul>
+
+    <h2>Page modification</h2>
+    <p>
+      Instrumentation is the only feature that changes the inspected page. It wraps
+      a standard Web API to observe timing and stores records in a page global. It
+      is off by default and reversible.
+    </p>
+
+    <h2>Third parties</h2>
+    <p>LockScope does not share data with third parties and does not use remote code.</p>
+
+    <h2>Contact</h2>
+    <p>
+      For privacy questions, use the developer contact shown on the Chrome Web
+      Store listing or the contact details on the project maintainer's GitHub
+      profile.
+    </p>
+
+    <h2>Changes</h2>
+    <p>
+      If this policy changes, the effective date will be updated. Material changes
+      will be noted in the project changelog.
+    </p>
+
+    <footer><a href="index.html">LockScope</a></footer>
+  </body>
+</html>

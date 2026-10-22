@@ -1,0 +1,21 @@
+{
+  "manifest_version": 3,
+  "name": "LockScope \u2014 Web Locks Inspector",
+  "version": "0.6.0",
+  "description": "Live view of navigator.locks across tabs: holders, waiters, and contention.",
+  "minimum_chrome_version": "120",
+  "devtools_page": "devtools.html",
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "optional_permissions": [
+    "scripting"
+  ],
+  "optional_host_permissions": [
+    "http://*/*",
+    "https://*/*"
+  ]
+}

@@ -1,0 +1,84 @@
+name: Bug report
+description: Report a problem with the LockScope panel, demo, or package.
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for the report. Please include a minimal reproduction and avoid
+        pasting secrets or sensitive lock names.
+
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: Describe the actual behavior.
+      placeholder: The panel shows...
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Open the demo at ...
+        2. Click ...
+        3. See ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+
+  - type: input
+    id: chrome
+    attributes:
+      label: Chrome version
+      placeholder: "156.0.8078.47"
+    validations:
+      required: true
+
+  - type: input
+    id: lockscope
+    attributes:
+      label: LockScope version
+      placeholder: "0.6.0"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: surface
+    attributes:
+      label: Where did it happen?
+      options:
+        - DevTools panel
+        - Demo page
+        - Package / install
+        - Documentation
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Console or error output
+      description: DevTools console output, panel banner text, or a screenshot.
+      render: text
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Checks
+      options:
+        - label: I am using the latest version of this repository.
+          required: true
+        - label: I searched existing issues before opening this one.
+          required: true

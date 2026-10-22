@@ -1,0 +1,25 @@
+{
+  "name": "lockscope",
+  "version": "0.6.0",
+  "private": true,
+  "description": "A Chrome DevTools extension for inspecting the Web Locks API",
+  "author": "Hashim",
+  "license": "MIT",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "keywords": [
+    "chrome-extension",
+    "devtools",
+    "web-locks",
+    "navigator.locks",
+    "debugging"
+  ],
+  "scripts": {
+    "check": "node --check extension/devtools.js && node --check extension/page-agent.js && node --check extension/panel/panel.js && node --check extension/instrument.js && node --check extension/panel/model.js && node --check extension/panel/timeline.js && node --check extension/panel/format.js && node --check demo/demo.js && node --check demo/worker.js && node --check scripts/package.mjs",
+    "test": "node --test",
+    "demo": "python3 -m http.server 8080 --directory demo",
+    "package": "node scripts/package.mjs"
+  }
+}

@@ -1,0 +1,18 @@
+# macOS
+.DS_Store
+
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+*.zip
+
+# Logs and local state
+*.log
+.env
+coverage/
+
+# Editors
+.idea/
+.vscode/
